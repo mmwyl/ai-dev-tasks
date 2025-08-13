@@ -29,17 +29,17 @@ The generated task list _must_ follow this structure:
 ```markdown
 ## Relevant Files
 
-- `path/to/potential/file1.ts` - Brief description of why this file is relevant (e.g., Contains the main component for this feature).
-- `path/to/file1.test.ts` - Unit tests for `file1.ts`.
-- `path/to/another/file.tsx` - Brief description (e.g., API route handler for data submission).
-- `path/to/another/file.test.tsx` - Unit tests for `another/file.tsx`.
-- `lib/utils/helpers.ts` - Brief description (e.g., Utility functions needed for calculations).
-- `lib/utils/helpers.test.ts` - Unit tests for `helpers.ts`.
+- `src/main/java/com/example/feature/UserController.java` - Brief description of why this file is relevant (e.g., REST controller handling HTTP endpoints for this feature).
+- `src/test/java/com/example/feature/UserControllerTest.java` - Unit tests for `UserController.java`.
+- `src/main/java/com/example/feature/UserService.java` - Brief description (e.g., Business logic service for user operations).
+- `src/test/java/com/example/feature/UserServiceTest.java` - Unit tests for `UserService.java`.
+- `src/main/java/com/example/feature/util/ValidationUtils.java` - Brief description (e.g., Utility functions needed for data validation).
+- `src/test/java/com/example/feature/util/ValidationUtilsTest.java` - Unit tests for `ValidationUtils.java`.
 
 ### Notes
 
-- Unit tests should typically be placed alongside the code files they are testing (e.g., `MyComponent.tsx` and `MyComponent.test.tsx` in the same directory).
-- Use `npx jest [optional/path/to/test/file]` to run tests. Running without a path executes all tests found by the Jest configuration.
+- Unit tests should typically be placed in `src/test/java` following the same package structure as the main code (e.g., `UserService.java` in `src/main/java/com/example/feature` and `UserServiceTest.java` in `src/test/java/com/example/feature`).
+- Use `mvn test` to run all tests, or `mvn -Dtest=UserServiceTest test` to run a specific test class. Running without `-Dtest` executes all tests found by the Maven Surefire configuration.
 
 ## Tasks
 
