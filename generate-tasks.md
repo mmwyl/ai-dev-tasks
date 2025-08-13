@@ -29,20 +29,20 @@ The generated task list _must_ follow this structure:
 ```markdown
 ## Relevant Files
 
-- `src/main/java/com/example/ui/MainFrame.java` - The main SwingX JFrame (UI entry point) assembling panels and menus.
-- `src/main/java/com/example/ui/ImportPanel.java` - SwingX panel for selecting files and triggering import actions.
-- `src/main/java/com/example/service/ImportService.java` - Business logic for parsing and validating Excel/CSV files.
-- `src/main/java/com/example/integration/excel/EasyExcelImporter.java` - EasyExcel-based reader for `.xlsx`.
-- `src/main/java/com/example/integration/csv/OpenCsvImporter.java` - OpenCSV-based reader for `.csv`.
-- `src/main/java/com/example/model/Record.java` - Data model for imported rows.
-- `src/test/java/com/example/service/ImportServiceTest.java` - Unit tests for `ImportService` (JUnit 5 + Mockito).
-- `src/test/java/com/example/integration/excel/EasyExcelImporterTest.java` - Unit tests for EasyExcel importer.
-- `src/test/java/com/example/integration/csv/OpenCsvImporterTest.java` - Unit tests for OpenCSV importer.
+- `src/ui/main_window.*` - Main application window (entry point) assembling components and menus.
+- `src/ui/import_panel.*` - UI component for file selection and import actions.
+- `src/services/import_service.*` - Business logic for parsing and validating files.
+- `src/integrations/excel_reader.*` - Excel file (.xlsx) parsing implementation.
+- `src/integrations/csv_reader.*` - CSV file parsing implementation.
+- `src/models/record.*` - Data model for imported rows.
+- `tests/services/import_service_test.*` - Unit tests for import service.
+- `tests/integrations/excel_reader_test.*` - Unit tests for Excel reader.
+- `tests/integrations/csv_reader_test.*` - Unit tests for CSV reader.
 
 ### Notes
 
-- Unit tests should typically be placed in `src/test/java` following the same package structure as the main code (e.g., `UserService.java` in `src/main/java/com/example/feature` and `UserServiceTest.java` in `src/test/java/com/example/feature`).
-- Use `mvn test` to run all tests, or `mvn -Dtest=UserServiceTest test` to run a specific test class. Running without `-Dtest` executes all tests found by the Maven Surefire configuration.
+- Unit tests should follow the project's testing convention (e.g., mirroring source structure in `tests/` or `test/` directory, or using language-specific patterns like `*_test.*`, `*Test.*`, or `test_*.*`).
+- Use the project's standard test runner command (e.g., `npm test`, `mvn test`, `pytest`, `go test`, `cargo test`, `dotnet test`, etc.) to execute all tests, or target specific test files/classes as per the language/framework convention.
 
 ## Tasks
 
