@@ -97,6 +97,17 @@ If you'd like to see this in action, I demonstrated it on [Claire Vo's "How I AI
 * **`generate-tasks.md`**: Takes a PRD markdown file as input and helps the AI break it down into a detailed, step-by-step implementation task list.
 * **`process-task-list.md`**: Instructs the AI on how to process the generated task list, tackling one task at a time and waiting for your approval before proceeding. (This file also contains logic for the AI to mark tasks as complete).
 
+### Language / 语言切换
+
+- English Rules
+  - [create-prd.md](create-prd.md)
+  - [generate-tasks.md](generate-tasks.md)
+  - [process-task-list.md](process-task-list.md)
+- 中文规则
+  - [create-prd.zh-CN.md](create-prd.zh-CN.md)
+  - [generate-tasks.zh-CN.md](generate-tasks.zh-CN.md)
+  - [process-task-list.zh-CN.md](process-task-list.zh-CN.md)
+
 ## 🌟 Benefits
 
 * **Structured Development:** Enforces a clear process from idea to code.
