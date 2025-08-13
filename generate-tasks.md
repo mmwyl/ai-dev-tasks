@@ -44,6 +44,17 @@ The generated task list _must_ follow this structure:
 - Unit tests should typically be placed in `src/test/java` following the same package structure as the main code (e.g., `UserService.java` in `src/main/java/com/example/feature` and `UserServiceTest.java` in `src/test/java/com/example/feature`).
 - Use `mvn test` to run all tests, or `mvn -Dtest=UserServiceTest test` to run a specific test class. Running without `-Dtest` executes all tests found by the Maven Surefire configuration.
 
+#### SwingX + File Import Best Practices
+
+- **UI 分层原则**：SwingX 组件应专注于渲染与事件绑定，业务逻辑应抽取到 Service 层。ActionListener 中仅转发用户操作到相应的 Service 方法，便于单元测试。
+- **文件选择与校验**：使用 `JFileChooser` 进行文件选择，设置 `FileNameExtensionFilter` 限制扩展名（如 `.xlsx`, `.csv`），并在打开前验证 MIME 类型或文件头，防止恶意文件。
+- **大文件内存策略**：
+  - **EasyExcel**：使用 `AnalysisEventListener` 逐行读取，避免将整个文件加载到内存。设置合理的批次大小（如每 1000 行处理一次）。
+  - **OpenCSV**：使用 `CSVReader` 的迭代器模式或 `CSVIterator`，逐行流式读取，避免 `readAll()` 方法。
+- **错误收集机制**：区分"致命错误"（文件格式错误、IO 异常）和"数据错误"（某行字段校验失败）。对数据错误采用收集模式，记录行号与错误信息，允许用户查看完整的错误报告。
+- **UI 可测试性**：将 Swing 组件的业务逻辑抽取为 Presenter 或 Controller 类，UI 类仅负责组件初始化、布局和事件绑定。这样可以对 Presenter 进行单元测试，而无需启动 GUI 环境。
+- **导入器测试策略**：对 EasyExcel/OpenCSV 导入器的单元测试可使用内存中的临时文件或 `ByteArrayInputStream`，避免依赖真实文件系统，提高测试的可重复性和执行速度。
+
 ## Tasks
 
 - [ ] 1.0 Parent Task Title
