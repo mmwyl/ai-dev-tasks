@@ -39,6 +39,17 @@ The generated PRD should include the following sections:
 8.  **Success Metrics:** How will the success of this feature be measured? (e.g., "Increase user engagement by 10%", "Reduce support tickets related to X").
 9.  **Open Questions:** List any remaining questions or areas needing further clarification.
 
+### Detail Capture Hints
+To improve downstream task quality and reduce missing details, include as many of the following as applicable:
+- Edge cases and error scenarios
+- External integrations (APIs, databases, third-party services) and expected contracts
+- Data flow requirements (validation, transformation, persistence)
+- Performance constraints or targets
+- Security requirements (authn/authz, input validation/sanitization)
+- UX specifics (loading/empty/error states, accessibility expectations)
+- Analytics/telemetry needs (events, metrics, dashboards)
+- Rollout/operational considerations (feature flags, migration/backfill, monitoring/alerts)
+
 ## Target Audience
 
 Assume the primary reader of the PRD is a **junior developer**. Therefore, requirements should be explicit, unambiguous, and avoid jargon where possible. Provide enough detail for them to understand the feature's purpose and core logic.

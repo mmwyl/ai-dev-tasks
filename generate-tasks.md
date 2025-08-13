@@ -66,7 +66,11 @@ AI should provide project-specific guidance following these principles:
 
 - [ ] 1.0 Parent Task Title
   - [ ] 1.1 [Sub-task description 1.1]
+        - Acceptance Criteria: [List concrete, verifiable outcomes]
+        - Failing Cases: [List representative failure scenarios and expected handling]
   - [ ] 1.2 [Sub-task description 1.2]
+        - Acceptance Criteria: [List concrete, verifiable outcomes]
+        - Failing Cases: [List representative failure scenarios and expected handling]
 - [ ] 2.0 Parent Task Title
   - [ ] 2.1 [Sub-task description 2.1]
 - [ ] 3.0 Parent Task Title (may not require sub-tasks if purely structural or configuration)

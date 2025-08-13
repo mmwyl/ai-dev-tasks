@@ -8,7 +8,14 @@ Guidelines for managing task lists in markdown files to track progress on comple
   1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
     - **First**: Run the project's full test suite using the command configured in the project
-    - **Only if all tests pass**: Stage changes (`git add .`)
+    - **Quality Check**: Verify implementation against the Detail Checklist in the task file:
+      - [ ] Edge cases and error flows are handled
+      - [ ] External integrations work with correct connection points
+      - [ ] Data validation/transformation/persistence operates correctly
+      - [ ] Performance considerations are implemented
+      - [ ] Security concerns are addressed
+      - [ ] UX details function as expected
+    - **Only if all tests pass AND checklist is verified**: Stage changes (`git add .`)
     - **Clean up**: Remove any temporary files and temporary code before committing
     - **Commit**: Use a descriptive commit message that:
       - Uses conventional commit format (`feat:`, `fix:`, `refactor:`, etc.)
@@ -45,4 +52,5 @@ When working with task lists, the AI must:
 4. Keep "Relevant Files" accurate and up to date.
 5. Before starting work, check which sub‑task is next.
 6. After implementing a sub‑task, update the file and then pause for user approval.
-7. Detect the project's established commands and tools for: running tests, building/compiling, and quality gates (linters/formatters/static analysis). Use those consistently.
+7. Before staging or committing, self-check against the "Detail Checklist" in the task file and resolve any gaps.
+8. Detect the project's established commands and tools for: running tests, building/compiling, and quality gates (linters/formatters/static analysis). Use those consistently.
