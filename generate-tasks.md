@@ -14,7 +14,7 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file
 2.  **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
-3.  **Assess Current State:** Review the existing codebase to understand existing infrastructre, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification. Additionally, detect the repository's primary language(s) and tooling (build system, package manager, test runner, framework) to ensure the plan and examples (e.g., file paths, test commands) are language-agnostic and correctly adapted to this project.
+3.  **Assess Current State:** Review the existing codebase to understand existing infrastructre, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification.
 4.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis and current state assessment, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
 5.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
 6.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task, cover the implementation details implied by the PRD, and consider existing codebase patterns where relevant without being constrained by them.
@@ -29,30 +29,25 @@ The generated task list _must_ follow this structure:
 ```markdown
 ## Relevant Files
 
-- `path/to/module/file.ext` - Brief description (e.g., core module/class/function for this feature).
-- `tests/module/file.test.ext` or `path/to/module/file_spec.ext` - Tests for `file.ext` (use your project's naming convention).
-- `path/to/service-or-endpoint.ext` - API/service layer changes if applicable.
-- `path/to/ui-component.ext` - UI component or template if applicable.
-- `scripts/migration_or_job.ext` - Data migrations, background jobs, or scripts if applicable.
+AI should identify and list files following these patterns:
+
+- **Core Implementation Files**: Primary source files that implement the feature functionality
+- **Test Files**: Corresponding test files for each core implementation file
+- **Configuration Files**: Build, dependency, or framework configuration files that may need updates
+- **Documentation Files**: API docs, README sections, or other documentation requiring updates
+- **Dependency Files**: Shared utilities, libraries, or modules that the feature depends on or modifies
+
+**Format**: `relative/path/to/file` - Clear description of the file's role in this feature
 
 ### Notes
 
-- Place tests according to your ecosystem's convention:
-  - JavaScript/TypeScript: alongside as `*.test.ts(x)`/`*.spec.ts(x)` or under `__tests__/`
-  - Python: under `tests/` as `test_*.py`
-  - Java/Kotlin: under `src/test/java|kotlin`
-  - Go: in same package as `*_test.go`
-  - Ruby: under `spec/` (RSpec) or `test/` (Minitest)
-  - Rust: `tests/` integration tests, unit tests inline with `#[cfg(test)]`
-  - .NET: in `*.Tests/` projects
-- Run your project's test command. Examples by ecosystem:
-  - Node.js: `npm test` / `pnpm test` / `yarn test`
-  - Python: `pytest`
-  - Go: `go test ./...`
-  - Java: `mvn test` or `gradle test`
-  - Ruby: `bundle exec rspec` or `bin/rails test`
-  - Rust: `cargo test`
-  - .NET: `dotnet test`
+AI should provide project-specific guidance following these principles:
+
+- **Test Organization**: Describe where tests should be placed according to the project's existing patterns
+- **Build Commands**: Identify the commands needed to build, test, and validate changes in this project
+- **Quality Gates**: List any linting, formatting, or static analysis tools configured in the project
+- **Dependencies**: Note any package installations or dependency updates required
+- **Integration Points**: Highlight files or systems that integrate with this feature
 
 ## Tasks
 
