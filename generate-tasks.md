@@ -14,7 +14,7 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file
 2.  **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
-3.  **Assess Current State:** Review the existing codebase to understand existing infrastructre, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification.
+3.  **Assess Current State:** Review the existing codebase to understand existing infrastructre, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification. Additionally, detect the repository's primary language(s) and tooling (build system, package manager, test runner, framework) to ensure the plan and examples (e.g., file paths, test commands) are language-agnostic and correctly adapted to this project.
 4.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis and current state assessment, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
 5.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
 6.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task, cover the implementation details implied by the PRD, and consider existing codebase patterns where relevant without being constrained by them.
@@ -29,20 +29,30 @@ The generated task list _must_ follow this structure:
 ```markdown
 ## Relevant Files
 
-- `src/ui/main_window.*` - Main application window (entry point) assembling components and menus.
-- `src/ui/import_panel.*` - UI component for file selection and import actions.
-- `src/services/import_service.*` - Business logic for parsing and validating files.
-- `src/integrations/excel_reader.*` - Excel file (.xlsx) parsing implementation.
-- `src/integrations/csv_reader.*` - CSV file parsing implementation.
-- `src/models/record.*` - Data model for imported rows.
-- `tests/services/import_service_test.*` - Unit tests for import service.
-- `tests/integrations/excel_reader_test.*` - Unit tests for Excel reader.
-- `tests/integrations/csv_reader_test.*` - Unit tests for CSV reader.
+- `path/to/module/file.ext` - Brief description (e.g., core module/class/function for this feature).
+- `tests/module/file.test.ext` or `path/to/module/file_spec.ext` - Tests for `file.ext` (use your project's naming convention).
+- `path/to/service-or-endpoint.ext` - API/service layer changes if applicable.
+- `path/to/ui-component.ext` - UI component or template if applicable.
+- `scripts/migration_or_job.ext` - Data migrations, background jobs, or scripts if applicable.
 
 ### Notes
 
-- Unit tests should follow the project's testing convention (e.g., mirroring source structure in `tests/` or `test/` directory, or using language-specific patterns like `*_test.*`, `*Test.*`, or `test_*.*`).
-- Use the project's standard test runner command (e.g., `npm test`, `mvn test`, `pytest`, `go test`, `cargo test`, `dotnet test`, etc.) to execute all tests, or target specific test files/classes as per the language/framework convention.
+- Place tests according to your ecosystem's convention:
+  - JavaScript/TypeScript: alongside as `*.test.ts(x)`/`*.spec.ts(x)` or under `__tests__/`
+  - Python: under `tests/` as `test_*.py`
+  - Java/Kotlin: under `src/test/java|kotlin`
+  - Go: in same package as `*_test.go`
+  - Ruby: under `spec/` (RSpec) or `test/` (Minitest)
+  - Rust: `tests/` integration tests, unit tests inline with `#[cfg(test)]`
+  - .NET: in `*.Tests/` projects
+- Run your project's test command. Examples by ecosystem:
+  - Node.js: `npm test` / `pnpm test` / `yarn test`
+  - Python: `pytest`
+  - Go: `go test ./...`
+  - Java: `mvn test` or `gradle test`
+  - Ruby: `bundle exec rspec` or `bin/rails test`
+  - Rust: `cargo test`
+  - .NET: `dotnet test`
 
 ## Tasks
 

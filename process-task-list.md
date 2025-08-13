@@ -7,8 +7,11 @@ Guidelines for managing task lists in markdown files to track progress on comple
 - **Completion protocol:**  
   1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
-    - **First**: Run the full test suite (use the project's standard test command, e.g., `npm test`, `mvn test`, `pytest`, `go test`, `cargo test`, `dotnet test`, or the equivalent in your stack)
+    - **First**: Run the full test suite using your project's standard test command.
+      - Examples by ecosystem: Node.js `npm test`/`pnpm test`/`yarn test`; Python `pytest`; Go `go test ./...`; Java `mvn test`/`gradle test`; Ruby `bundle exec rspec`/`bin/rails test`; Rust `cargo test`; .NET `dotnet test`.
+      - For monorepos or multi-module repos, ensure tests run across all packages/modules.
     - **Only if all tests pass**: Stage changes (`git add .`)
+    - **Quality gates** (if configured): Run linters/formatters/static analysis (e.g., ESLint/Prettier, Ruff/Black/Flake8, `go fmt`/`go vet`, Checkstyle/SpotBugs, RuboCop, `cargo fmt`/`cargo clippy`, `dotnet format`).
     - **Clean up**: Remove any temporary files and temporary code before committing
     - **Commit**: Use a descriptive commit message that:
       - Uses conventional commit format (`feat:`, `fix:`, `refactor:`, etc.)
@@ -43,5 +46,5 @@ When working with task lists, the AI must:
    - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
 3. Add newly discovered tasks.
 4. Keep "Relevant Files" accurate and up to date.
-5. Before starting work, check which sub‑task is next.
+5. Before starting work, detect the project's primary language(s) and tooling and adapt commands accordingly. Then check which sub‑task is next.
 6. After implementing a sub‑task, update the file and then pause for user approval.

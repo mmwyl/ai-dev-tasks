@@ -1,6 +1,6 @@
 # 🚀 AI Dev Tasks 🤖
 
-Welcome to **AI Dev Tasks**! This repository provides a collection of markdown files designed to supercharge your feature development workflow with AI-powered IDEs and CLIs. Originally built for [Cursor](https://cursor.sh/), these tools work with any AI coding assistant including Claude Code, Windsurf, and others. By leveraging these structured prompts, you can systematically approach building features, from ideation to implementation, with built-in checkpoints for verification.
+Welcome to **AI Dev Tasks**! This repository provides a collection of markdown files designed to supercharge your feature development workflow with AI-powered IDEs and CLIs. Originally built for [Cursor](https://cursor.sh/), these tools work with any AI coding assistant including Claude Code, Windsurf, and more.
 
 Stop wrestling with monolithic AI requests and start guiding your AI collaborator step-by-step!
 
@@ -160,10 +160,6 @@ To use these tools with Claude Code:
      ```
      Please process the task list using /ai-dev-tasks/process-task-list.md
      ```
-
-   Make sure to restart Claude Code after adding these files (`/exit`).
-   Then use commands like `/create-prd` to quickly start the workflow.
-   Note: This setup can also be adopted for a global level across all your projects, please refer to the Claude Code documentation [here](https://docs.anthropic.com/en/docs/claude-code/memory) and [here](https://docs.anthropic.com/en/docs/claude-code/common-workflows#create-personal-slash-commands).
 
 ### Other Tools
 
