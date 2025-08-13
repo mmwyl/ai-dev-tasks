@@ -1,5 +1,7 @@
 # 🚀 AI Dev Tasks 🤖
 
+**Language / 语言**: [English](#language--语言切换) | [中文](#language--语言切换)
+
 Welcome to **AI Dev Tasks**! This repository provides a collection of markdown files designed to supercharge your feature development workflow with AI-powered IDEs and CLIs. Originally built for [Cursor](https://cursor.sh/), these tools work with any AI coding assistant including Claude Code, Windsurf, and others. By leveraging these structured prompts, you can systematically approach building features, from ideation to implementation, with built-in checkpoints for verification.
 
 Stop wrestling with monolithic AI requests and start guiding your AI collaborator step-by-step!
@@ -140,7 +142,7 @@ In practice, this means you should:
 
 ## 🛠️ How to Use
 
-Looking for a detailed Chinese guide? See: [用户手册（中文）](user-guide.zh-CN.md)
+Looking for detailed guides? See: [User Guide (English)](user-guide.en.md) | [用户手册（中文）](user-guide.zh-CN.md)
 
 1. **Clone or Download:** Get these `.md` files into your project or a central location where your AI tool can access them.
    ```bash
