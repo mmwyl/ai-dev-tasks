@@ -29,12 +29,15 @@ The generated task list _must_ follow this structure:
 ```markdown
 ## Relevant Files
 
-- `src/main/java/com/example/feature/UserController.java` - Brief description of why this file is relevant (e.g., REST controller handling HTTP endpoints for this feature).
-- `src/test/java/com/example/feature/UserControllerTest.java` - Unit tests for `UserController.java`.
-- `src/main/java/com/example/feature/UserService.java` - Brief description (e.g., Business logic service for user operations).
-- `src/test/java/com/example/feature/UserServiceTest.java` - Unit tests for `UserService.java`.
-- `src/main/java/com/example/feature/util/ValidationUtils.java` - Brief description (e.g., Utility functions needed for data validation).
-- `src/test/java/com/example/feature/util/ValidationUtilsTest.java` - Unit tests for `ValidationUtils.java`.
+- `src/main/java/com/example/ui/MainFrame.java` - The main SwingX JFrame (UI entry point) assembling panels and menus.
+- `src/main/java/com/example/ui/ImportPanel.java` - SwingX panel for selecting files and triggering import actions.
+- `src/main/java/com/example/service/ImportService.java` - Business logic for parsing and validating Excel/CSV files.
+- `src/main/java/com/example/integration/excel/EasyExcelImporter.java` - EasyExcel-based reader for `.xlsx`.
+- `src/main/java/com/example/integration/csv/OpenCsvImporter.java` - OpenCSV-based reader for `.csv`.
+- `src/main/java/com/example/model/Record.java` - Data model for imported rows.
+- `src/test/java/com/example/service/ImportServiceTest.java` - Unit tests for `ImportService` (JUnit 5 + Mockito).
+- `src/test/java/com/example/integration/excel/EasyExcelImporterTest.java` - Unit tests for EasyExcel importer.
+- `src/test/java/com/example/integration/csv/OpenCsvImporterTest.java` - Unit tests for OpenCSV importer.
 
 ### Notes
 
