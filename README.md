@@ -140,6 +140,8 @@ In practice, this means you should:
 
 ## 🛠️ How to Use
 
+Looking for a detailed Chinese guide? See: [用户手册（中文）](user-guide.zh-CN.md)
+
 1. **Clone or Download:** Get these `.md` files into your project or a central location where your AI tool can access them.
    ```bash
    git clone https://github.com/snarktank/ai-dev-tasks.git
