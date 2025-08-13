@@ -40,6 +40,13 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 The generated task list _must_ follow this structure:
 
 ```markdown
+## Execution Configuration
+
+**Execution Mode**: `Default` | `Auto`
+- **Default**: Pause after each sub-task for user confirmation
+- **Auto**: Execute all sub-tasks within a parent task continuously, pause only after parent task completion
+- **Quality Gates**: All tests, quality checks, and commit protocols remain unchanged regardless of mode
+
 ## Relevant Files
 
 AI should identify and list files following these patterns:
@@ -88,7 +95,7 @@ For each parent task and its sub-tasks, ensure the following are explicitly cove
 
 ## Interaction Model
 
-The process explicitly requires a pause after generating parent tasks to get user confirmation ("Go") before proceeding to generate the detailed sub-tasks. Before proceeding, the AI must review the "Critical Details Extraction" with the user and confirm alignment. This ensures both the high-level plan and the key implementation details are aligned before diving into execution.
+The process explicitly requires a pause after generating parent tasks to get user confirmation ("Go") before proceeding to generate the detailed sub-tasks. For execution, the task list may declare an "Execution Mode" in the "Execution Configuration" section (`Default` or `Auto`). In `Auto` mode, the AI executes all sub-tasks under a parent task continuously and pauses only after the parent task completes for review; quality gates remain unchanged. Before proceeding, the AI must review the "Critical Details Extraction" with the user and confirm alignment. This ensures both the high-level plan and the key implementation details are aligned before diving into execution.
 
 ## Target Audience
 
