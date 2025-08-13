@@ -90,8 +90,39 @@ Acceptance & Failing examples:
   - Acceptance: unauthenticated blocked; role matrix enforced; audit logs present
   - Failing: expired/forged token; bypass paths; multi-role boundaries
 
-## Troubleshooting
-- AI not pausing for confirmation: reiterate flow in the task file and use stepwise dialogue
+## Auto Mode: Continuous Execution
+
+Auto Mode lets the AI execute all sub-tasks under a parent task without pausing for per-sub-task confirmation. Use it when you want faster, uninterrupted progress while keeping strong quality gates.
+
+Key behaviors:
+- Continuous execution within a parent task
+- Pause at parent boundaries for review (tests + Detail Checklist)
+- Quality gates unchanged: full test suite, checklist verification, proper commit protocol
+
+How to enable:
+- In dialogue: say "Auto Mode on" / "Enable continuous execution" (turn off with "Auto Mode off")
+- In task files: declare in the header under Execution Configuration:
+
+Example snippet:
+```
+## Execution Configuration
+- Execution Mode: Auto
+- Pause Points: Parent task completion only
+- Quality Gates: Full tests + Detail Checklist before commit
+```
+
+Where to read the rules:
+- process-task-list.md → Execution Modes
+- generate-tasks.md → Execution Configuration in the task template
+
+When to use:
+- Large parent tasks with many small sub-steps
+- You trust the outlined Acceptance Criteria and Failing Cases
+- You still want a checkpoint at the end of each parent task
+
+Caveats:
+- Do not skip parent-level review; verify tests/checklist before proceeding
+- If external dependencies or migrations are risky, prefer Default Mode
 - Missing test commands: add a sub-task to detect and configure project commands
 - External credentials: use sandbox/local env vars; never commit secrets
 - Failing quality gates: add sub-tasks to fix lint/format/type-check/tests
