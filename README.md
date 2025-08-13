@@ -1,6 +1,6 @@
 # 🚀 AI Dev Tasks 🤖
 
-Welcome to **AI Dev Tasks**! This repository provides a collection of markdown files designed to supercharge your feature development workflow with AI-powered IDEs and CLIs. Originally built for [Cursor](https://cursor.sh/), these tools work with any AI coding assistant including Claude Code, Windsurf, and more.
+Welcome to **AI Dev Tasks**! This repository provides a collection of markdown files designed to supercharge your feature development workflow with AI-powered IDEs and CLIs. Originally built for [Cursor](https://cursor.sh/), these tools work with any AI coding assistant including Claude Code, Windsurf, and others. By leveraging these structured prompts, you can systematically approach building features, from ideation to implementation, with built-in checkpoints for verification.
 
 Stop wrestling with monolithic AI requests and start guiding your AI collaborator step-by-step!
 
@@ -105,6 +105,28 @@ If you'd like to see this in action, I demonstrated it on [Claire Vo's "How I AI
 * **Improved Reliability:** Offers a more dependable approach to leveraging AI for significant development work compared to single, large prompts.
 * **Clear Progress Tracking:** Provides a visual representation of completed tasks, making it easy to see how much has been done and what's next.
 
+## ✅ Quality mechanisms to prevent missed details
+
+To reduce the risk of missing critical implementation details, this workflow includes several safeguards:
+
+- PRD source quality: `create-prd.md` includes a Detail Capture Hints section to encourage providing:
+  - Edge cases, external integrations and contracts, data flow (validation/transformation/persistence), performance targets, security requirements, UX specifics, analytics/telemetry, rollout/ops considerations
+- Task generation quality: `generate-tasks.md` adds:
+  - A Critical Details Extraction step performed before task breakdown
+  - A confirmation gate to review those details with the user before proceeding
+  - For each sub-task: Acceptance Criteria and Failing Cases to make outcomes verifiable
+  - A Detail Checklist in the output format to ensure coverage of edge cases, integrations, data, performance, security, and UX
+- Execution quality: `process-task-list.md` requires:
+  - Running the project's full test suite using configured commands
+  - A Quality Check step to verify the implementation against the Detail Checklist before staging/committing
+  - Consistent use of the project's existing tools for tests/build/quality gates
+
+In practice, this means you should:
+
+1. Confirm the Critical Details Extraction summary looks correct before generating sub-tasks
+2. Ensure every sub-task has clear Acceptance Criteria and representative Failing Cases
+3. Before staging/committing, tick through the Detail Checklist and resolve any gaps
+
 ## 🛠️ How to Use
 
 1. **Clone or Download:** Get these `.md` files into your project or a central location where your AI tool can access them.
@@ -160,6 +182,10 @@ To use these tools with Claude Code:
      ```
      Please process the task list using /ai-dev-tasks/process-task-list.md
      ```
+
+   Make sure to restart Claude Code after adding these files (`/exit`).
+   Then use commands like `/create-prd` to quickly start the workflow.
+   Note: This setup can also be adopted for a global level across all your projects, please refer to the Claude Code documentation [here](https://docs.anthropic.com/en/docs/claude-code/memory) and [here](https://docs.anthropic.com/en/docs/claude-code/common-workflows#create-personal-slash-commands).
 
 ### Other Tools
 
