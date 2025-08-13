@@ -3,7 +3,16 @@
 Guidelines for managing task lists in markdown files to track progress on completing a PRD
 
 ## Task Implementation
+
+### Execution Modes
+
+**Default Mode (Step-by-step):**
 - **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
+
+**Auto Mode (Continuous execution):**
+- When the user explicitly requests "auto mode" or "continuous execution", you may proceed through all sub-tasks without stopping for confirmation between each one
+- **Still pause for parent task completion:** Always stop after completing a parent task (when all its sub-tasks are done) to allow user review before proceeding to the next parent task
+- **Quality gates remain:** All quality checks, tests, and commit protocols still apply
 - **Completion protocol:**  
   1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
@@ -51,6 +60,6 @@ When working with task lists, the AI must:
 3. Add newly discovered tasks.
 4. Keep "Relevant Files" accurate and up to date.
 5. Before starting work, check which sub‑task is next.
-6. After implementing a sub‑task, update the file and then pause for user approval.
+6. After implementing a sub‑task, update the file and then pause for user approval. If the user has enabled Auto Mode, do not pause between sub‑tasks under the same parent task; still pause after the parent task is completed for review.
 7. Before staging or committing, self-check against the "Detail Checklist" in the task file and resolve any gaps.
 8. Detect the project's established commands and tools for: running tests, building/compiling, and quality gates (linters/formatters/static analysis). Use those consistently.
