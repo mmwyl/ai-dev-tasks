@@ -112,6 +112,8 @@ If you'd like to see this in action, I demonstrated it on [Claire Vo's "How I AI
 
 **🚀 Auto Mode**: For continuous task execution without individual confirmations, see the **Auto Mode** configuration options in [process-task-list.md](process-task-list.md) and [process-task-list.zh-CN.md](process-task-list.zh-CN.md). Example: [example-task-list-auto-mode.md](example-task-list-auto-mode.md)
 
+**🧪 MVP Strategy**: To ship a Minimum Viable Product fast while avoiding overbuilding, use the **MVP Mode**. Read the rules in [generate-tasks.md](generate-tasks.md) / [generate-tasks.zh-CN.md](generate-tasks.zh-CN.md) for MoSCoW prioritization and cutline, and execution behavior in [process-task-list.md](process-task-list.md) / [process-task-list.zh-CN.md](process-task-list.zh-CN.md). Example: [example-task-list-mvp.md](example-task-list-mvp.md)
+
 ## 🌟 Benefits
 
 * **Structured Development:** Enforces a clear process from idea to code.
