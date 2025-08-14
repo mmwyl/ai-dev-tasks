@@ -39,6 +39,32 @@ Guidelines for managing task lists in markdown files to track progress on comple
   3. Once all the subtasks are marked completed and changes have been committed, mark the **parent task** as completed.
 - Stop after each sub‑task and wait for the user's go‑ahead.
 
+## Sync Policy and Idempotency
+
+To prevent task state desynchronization and ensure reliable execution:
+
+### Immediate Status Updates
+- **Update task status immediately** after completing each sub-task by changing `[ ]` to `[x]` in the task list file
+- **Save the file immediately** after each status change to persist the state
+- **Never batch status updates** - mark completion as soon as the sub-task is done
+
+### State Verification Before Execution  
+- **Always check task status** before starting any sub-task
+- **Skip tasks already marked `[x]`** to avoid duplicate work
+- **Verify parent task completion** by ensuring all sub-tasks are `[x]` before marking the parent as complete
+
+### Idempotency Requirements
+- **Re-execution safe**: Each sub-task should be designed to be safely re-runnable
+- **State checks**: Before executing, verify if the desired outcome already exists
+- **Atomic commits**: Group related changes into single commits to maintain consistency
+
+### Recovery Protocol
+- If task list becomes out of sync with actual progress:
+  1. Review completed work in the codebase
+  2. Update task status to reflect actual completion state
+  3. Document any discrepancies found
+  4. Resume from the correct next task
+
 ## Task List Maintenance
 
 1. **Update the task list as you work:**

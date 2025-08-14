@@ -100,3 +100,9 @@ The process explicitly requires a pause after generating parent tasks to get use
 ## Target Audience
 
 Assume the primary reader of the task list is a **junior developer** who will implement the feature with awareness of the existing codebase context.
+
+## Sync & Status Guidance
+- The generated task list must be designed for immediate status updates during execution
+- Each sub-task should be individually markable with `[ ]` → `[x]` and safe to skip if already `[x]`
+- Include a clear "Execution Configuration" section so the processor knows when to pause and how to commit
+- Encourage idempotent sub-tasks and atomic commits to avoid partial or duplicated work
